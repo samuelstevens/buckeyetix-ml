@@ -135,8 +135,6 @@ np.savez_compressed(
     y_test=test_outcome
 )
 
-print(train_tickets[0])
-
 for i in range(train_tickets.shape[0]):
     train_tickets[i][2] = max_rank - train_tickets[i][2] # rank
     train_tickets[i][3] = max_rank - train_tickets[i][3] # osu_rank
@@ -154,8 +152,6 @@ for i in range(test_tickets.shape[0]):
     test_tickets[i][3] /= max_rank # osu_rank
     test_tickets[i][4] = (test_tickets[i][4] - min_price) / (max_price - min_price) # price
     # test_tickets[i][7] /= 11 # games_played
-
-print(train_tickets[0])
 
 np.savez_compressed(
     os.getenv("HOME") + '/tmp/normalized_data.npz',

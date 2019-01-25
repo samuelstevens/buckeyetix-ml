@@ -1,4 +1,4 @@
-import multiprocessing, sys, os
+import multiprocessing, sys, os, json
 
 from multiprocessing import Pool
 import numpy as np
@@ -166,8 +166,9 @@ def main():
 
 
 
-    print(best_model, optimal_layers, optimal_dropout, optimal_nodes_per_layer)
+    result = {'model': str(best_model), 'layers': optimal_layers, 'dropout': optimal_dropout, 'nodes': optimal_nodes_per_layer}
 
-    print('Accuracy: ' + str(max_accuracy))
+    with open(os.getenv("HOME") + '/tmp/result.json', 'w') as outfile:
+        json.dump(result, outfile)
 
 main()
