@@ -11,7 +11,7 @@ from keras.optimizers import RMSprop, Adagrad, SGD, Adadelta, Adam, Adamax, Nada
 
 
 def load_data():
-    data = np.load('/tmp/ml/normalized_data.npz')
+    data = np.load('~/tmp/normalized_data.npz')
 
     x_train = data['x_train']
     y_train = data['y_train']
@@ -116,7 +116,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
 
 def callback(result):
     # print(result)
-    # with open('/tmp/ml/results.txt', 'a') as results_file:
+    # with open('~/tmp/results.txt', 'a') as results_file:
     #     results_file.write(str(result))
     pass
 

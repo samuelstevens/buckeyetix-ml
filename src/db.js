@@ -21,7 +21,7 @@ const getAllTickets = async () => {
 const saveDataToJson = data => {
   const json = JSON.stringify(data);
 
-  fs.writeFile('/tmp/ml/tickets.json', json, 'utf8', error => {
+  fs.writeFile('~/tmp/tickets.json', json, 'utf8', error => {
     if(error) {
       console.log(error);
     }

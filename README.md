@@ -22,8 +22,11 @@ cd buckeyetix-ml
 npm install
 
 virtualenv venv --python $(which python) # if 2.7
-cd venv
 source venv/bin/activate
 
 pip install -r requirements.txt
 ```
+
+## Running
+
+Ensure that folder `~/tmp` exists (and that you can write/read from it).

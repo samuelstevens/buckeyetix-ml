@@ -6,7 +6,7 @@ max_price = 0
 min_price = 999
 max_rank = 26
 
-with open('/tmp/ml/tickets.json', 'r') as read_file:
+with open('~/tmp/tickets.json', 'r') as read_file:
     data = json.load(read_file)
 
 train_tickets = []
@@ -127,7 +127,7 @@ test_outcome = np.array(test_outcome)
 train_outcome = np.array(train_outcome)
 
 np.savez_compressed(
-    '/tmp/ml/data.npz',
+    '~/tmp/data.npz',
     x_train=train_tickets,
     y_train=train_outcome,
     x_test=test_tickets,
@@ -157,7 +157,7 @@ for i in range(test_tickets.shape[0]):
 print(train_tickets[0])
 
 np.savez_compressed(
-    '/tmp/ml/normalized_data.npz',
+    '~/tmp/normalized_data.npz',
     x_train=train_tickets,
     y_train=train_outcome,
     x_test=test_tickets,
