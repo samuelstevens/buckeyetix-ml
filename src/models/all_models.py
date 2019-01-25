@@ -1,7 +1,6 @@
-import multiprocessing
-from multiprocessing import Pool
-import sys
+import multiprocessing, sys, os
 
+from multiprocessing import Pool
 import numpy as np
 
 import keras
@@ -11,7 +10,7 @@ from keras.optimizers import RMSprop, Adagrad, SGD, Adadelta, Adam, Adamax, Nada
 
 
 def load_data():
-    data = np.load('~/tmp/normalized_data.npz')
+    data = np.load(os.getenv("HOME") + '/tmp/normalized_data.npz')
 
     x_train = data['x_train']
     y_train = data['y_train']
@@ -71,7 +70,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
 
             nodes_per_layer = [3] * layers
             # makes an array of size <layers>, with default 3 nodes in each layer
-            
+
             for layer_index in range(0, layers):
                 for nodes in range(3, 10):
                     nodes_per_layer[layer_index] = nodes
@@ -116,7 +115,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
 
 def callback(result):
     # print(result)
-    # with open('~/tmp/results.txt', 'a') as results_file:
+    # with open(os.getenv("HOME") + '/tmp/results.txt', 'a') as results_file:
     #     results_file.write(str(result))
     pass
 

@@ -22,11 +22,11 @@ const saveDataToJson = data => {
   const json = JSON.stringify(data);
 
   fs.writeFile('~/tmp/tickets.json', json, 'utf8', error => {
-    if(error) {
+    if (error) {
       console.log(error);
     }
   });
-}
+};
 
 const main = async () => {
   saveDataToJson(await getAllTickets());

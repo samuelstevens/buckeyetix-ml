@@ -30,3 +30,11 @@ pip install -r requirements.txt
 ## Running
 
 Ensure that folder `~/tmp` exists (and that you can write/read from it).
+
+```bash
+cp data/tickets.json ~/tmp/
+
+python src/script.py
+
+python src/models/all_models.py
+```
