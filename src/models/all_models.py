@@ -27,13 +27,13 @@ def load_data():
     return x_train, y_train, x_test, y_test
 
 
-def get_model(x_train, y_train, hidden_layers=1, use_dropout=True, model_type=keras.optimizers.RMSprop, dropout=0.2):
+def get_model(x_train, y_train, hidden_layers=1, use_dropout=True, model_type=keras.optimizers.RMSprop, dropout=0.2, nodes_per_layer=[5]):
     num_classes = y_train.shape[1]
 
     model = Sequential()
 
     for i in range(hidden_layers):
-        model.add(Dense(5, activation='relu', input_shape=(x_train.shape[1],)))
+        model.add(Dense(nodes_per_layer[i], activation='relu', input_shape=(x_train.shape[1],)))
         if use_dropout:
             model.add(Dropout(dropout))
 
@@ -62,37 +62,57 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
     max_accuracy = 0.0
     optimal_layers = 0
     optimal_dropout = 0.0
+    optimal_nodes_per_layer = []
 
-    for layers in range(0, 5): # number of layers
+    for layers in range(1, 5): # number of layers 1-4
         dropout = 0.0
-        for dropout_increment in range(0, 1): # reset to 5 for proper runs
+        for dropout_increment in range(0, 5): # reset to 5 for proper runs
             dropout += dropout_increment * 0.01
 
-            model = get_model(
-                x_train=x_train,
-                y_train=y_train,
-                hidden_layers=layers,
-                use_dropout=True,
-                model_type=model_type,
-                dropout=dropout
-            )
+            nodes_per_layer = [3] * layers
+            # makes an array of size <layers>, with default 3 nodes in each layer
+            
+            for layer_index in range(0, layers):
+                for nodes in range(3, 10):
+                    nodes_per_layer[layer_index] = nodes
 
-            try:
-                train_model(model, x_train, y_train, x_test, y_test, epochs)
+                    try:
+                        model = get_model(
+                            x_train=x_train,
+                            y_train=y_train,
+                            hidden_layers=layers,
+                            use_dropout=True,
+                            model_type=model_type,
+                            dropout=dropout,
+                            nodes_per_layer=nodes_per_layer
+                        )
 
 
-                score = model.evaluate(x_test, y_test, verbose=0)
+                        train_model(model, x_train, y_train, x_test, y_test, epochs)
 
-                if score[1] > max_accuracy:
-                    max_accuracy = score[1]
-                    optimal_layers = layers
-                    optimal_dropout = dropout
-            except Exception as e:
-                print(e)
 
-        print('Trained model: ' + str(model_type) + ' with ' + str(layers) + ' hidden layer(s).')
+                        score = model.evaluate(x_test, y_test, verbose=0)
 
-    return max_accuracy, optimal_layers, optimal_dropout
+                        if score[1] > max_accuracy:
+                            max_accuracy = score[1]
+                            optimal_layers = layers
+                            optimal_dropout = dropout
+                            optimal_nodes_per_layer = nodes_per_layer
+
+                            print(
+                                'Improved model; currently using ' +
+                                str(optimal_layers) + ' layers, ' +
+                                str(optimal_dropout) + '0% dropout, ' +
+                                ' and ' + str(optimal_nodes_per_layer) +
+                                ' as node arrangement.'
+                            )
+
+                    except Exception as e:
+                        print(e)
+
+        # print('Trained model: ' + str(model_type) + ' with ' + str(layers) + ' hidden layer(s).')
+
+    return max_accuracy, optimal_layers, optimal_dropout, optimal_nodes_per_layer
 
 def callback(result):
     # print(result)
@@ -119,6 +139,7 @@ def main():
     best_model = model_types[0]
     optimal_layers = 0
     optimal_dropout = 0.0
+    optimal_nodes_per_layer = 5
 
     pool = Pool()
 
@@ -138,6 +159,7 @@ def main():
                     max_accuracy = answer[0]
                     optimal_layers = answer[1]
                     optimal_dropout = answer[2]
+                    optimal_nodes_per_layer = answer[3]
 
             break
         except multiprocessing.TimeoutError:
@@ -145,7 +167,7 @@ def main():
 
 
 
-    print(best_model, optimal_layers, optimal_dropout)
+    print(best_model, optimal_layers, optimal_dropout, optimal_nodes_per_layer)
 
     print('Accuracy: ' + str(max_accuracy))
 
