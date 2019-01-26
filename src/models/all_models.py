@@ -29,7 +29,11 @@ def get_model(x_train, y_train, hidden_layers=1, use_dropout=True, model_type=ke
     model = Sequential()
 
     for i in range(hidden_layers):
-        model.add(Dense(nodes_per_layer[i], activation='relu', input_shape=(x_train.shape[1],)))
+        if i == 0:
+            model.add(Dense(nodes_per_layer[i], activation='relu', input_shape=(x_train.shape[1],)))
+        else:
+            model.add(Dense(nodes_per_layer[i], activation='relu'))
+            
         if use_dropout:
             model.add(Dropout(dropout))
 
@@ -68,7 +72,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
             nodes_per_layer = [3] * layers
             # makes an array of size <layers>, with default 3 nodes in each layer
 
-            for layer_index in range(1, layers):
+            for layer_index in range(0, layers):
                 for nodes in range(3, 11):
                     nodes_per_layer[layer_index] = nodes
 
