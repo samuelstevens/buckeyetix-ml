@@ -1,8 +1,6 @@
 import numpy as np
 import random, json, os
 
-
-
 max_price = 0
 min_price = 999
 max_rank = 26
@@ -25,6 +23,16 @@ for ticket in data:
     price = ticket['price']
     rival = 0
     conference = 0
+    seat_value = int(ticket['row'])
+
+    if 'AA' in ticket['section']:
+        pass
+    elif 'A' in ticket['section']:
+        seat_value += 40
+    elif 'B' in ticket['section']:
+        seat_value += 80
+    elif 'C' in ticket['section']:
+        seat_value += 120
 
     if max_price < price and price < 800:
         max_price = price
@@ -104,7 +112,7 @@ for ticket in data:
         ticket['price'],
         rival,
         conference,
-        # games_played
+        seat_value
     ]
 
     if ticket['flag'] == 'Complete':
@@ -135,6 +143,8 @@ np.savez_compressed(
     y_test=test_outcome
 )
 
+print(train_tickets[0])
+
 for i in range(train_tickets.shape[0]):
     train_tickets[i][2] = max_rank - train_tickets[i][2] # rank
     train_tickets[i][3] = max_rank - train_tickets[i][3] # osu_rank
@@ -142,7 +152,7 @@ for i in range(train_tickets.shape[0]):
     train_tickets[i][2] /= max_rank # rank
     train_tickets[i][3] /= max_rank # osu_rank
     train_tickets[i][4] = (train_tickets[i][4] - min_price) / (max_price - min_price) # price
-    # train_tickets[i][7] /= 11 # games_played
+    train_tickets[i][7] /= 160 # row
 
 for i in range(test_tickets.shape[0]):
     test_tickets[i][2] = max_rank - test_tickets[i][2] # rank
@@ -151,7 +161,9 @@ for i in range(test_tickets.shape[0]):
     test_tickets[i][2] /= max_rank # rank
     test_tickets[i][3] /= max_rank # osu_rank
     test_tickets[i][4] = (test_tickets[i][4] - min_price) / (max_price - min_price) # price
-    # test_tickets[i][7] /= 11 # games_played
+    train_tickets[i][7] /= 160 # row
+
+print(train_tickets[0])
 
 np.savez_compressed(
     os.getenv("HOME") + '/tmp/normalized_data.npz',

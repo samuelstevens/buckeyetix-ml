@@ -99,9 +99,9 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
                             optimal_nodes_per_layer = nodes_per_layer
 
                             print(
-                                'Improved model; currently using ' +
-                                str(optimal_layers) + ' layers, ' +
-                                str(optimal_dropout) + '0% dropout, ' +
+                                'Accuracy is ' + str(round(max_accuracy * 100, 1)) +
+                                '% using ' + str(optimal_layers) + ' layers, ' +
+                                str(round(optimal_dropout * 100, 1)) + '% dropout, ' +
                                 ' and ' + str(optimal_nodes_per_layer) +
                                 ' as node arrangement.'
                             )
@@ -148,7 +148,6 @@ def main():
     while 1:
         try:
             answers = []
-
             for result in model_results:
                 answers.append(result.get(0.02))
 

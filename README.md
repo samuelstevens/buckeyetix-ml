@@ -33,8 +33,16 @@ Ensure that folder `~/tmp` exists (and that you can write/read from it).
 
 ```bash
 cp data/tickets.json ~/tmp/
-
 python src/script.py
-
 python src/models/all_models.py
 ```
+
+## To Do
+
+- [x] Add row number as parameter
+- [ ] Add weather (numerical rating maybe) as parameter
+- Optimize process past simply trying every option
+- Have output written to a file to see progress/errors
+- Record time take to find result
+
+current process (on stdlinux): 23584
