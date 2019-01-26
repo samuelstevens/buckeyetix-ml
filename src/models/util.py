@@ -18,11 +18,3 @@ def get_nodes(arr=[], max_length=4, min=3, max=10):
             arr_of_arrs = arr_of_arrs + get_nodes(arr[:], max_length)
 
     return arr_of_arrs
-#
-# layers = recursive(min=3, max=10, max_length=4)
-# number_of_layers = 0
-# for layer in layers:
-#     print(layer)
-#     number_of_layers += 1
-#
-# print(number_of_layers)

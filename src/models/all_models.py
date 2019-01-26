@@ -122,17 +122,23 @@ def get_best_network(best_network, answer):
     else:
         return answer
 
-def main():
-    x_train, y_train, x_test, y_test = load_data()
-
+def get_finished_models():
     try:
         with open(os.getenv("HOME") + '/tmp/finished_models.json', 'r') as read_file:
             finished_models = [json.loads(line) for line in read_file]
-
     except ValueError as e:
         finished_models = []
     except IOError as e:
         finished_models = []
+
+    finished_models = set((i['model'] + str(i['nodes'])) for i in finished_models)
+
+    return finished_models
+
+def main():
+    x_train, y_train, x_test, y_test = load_data()
+
+    finished_models = get_finished_models()
 
     model_types = [
         keras.optimizers.RMSprop,
@@ -153,8 +159,6 @@ def main():
     start = time.clock()
 
     models_to_test = 0
-
-    finished_models = set((i['model'] + str(i['nodes'])) for i in finished_models)
 
     node_arrangements = get_nodes()
 
