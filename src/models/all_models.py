@@ -74,6 +74,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
             # makes an array of size <layers>, with default 3 nodes in each layer
 
             for layer_index in range(0, layers):
+                
                 for nodes in range(3, 11):
                     nodes_per_layer[layer_index] = nodes
 

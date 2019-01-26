@@ -52,6 +52,7 @@ python -u src/models/all_models.py > ~/tmp/$(date +"%d-%h-%y-%T").out &
 - [ ] Optimize process past simply trying every option
 - [ ] Have output written to a file to see progress/errors
 - [ ] Record time take to find result
+- [ ] Split up processes (do all of one config at once, save, then load)
 
 current process (on stdlinux): 23584
 
