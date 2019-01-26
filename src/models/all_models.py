@@ -107,7 +107,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
                         print(e)
 
             dropout += 0.05
-            
+
     return max_accuracy, optimal_layers, optimal_dropout, optimal_nodes_per_layer
 
 def main():
