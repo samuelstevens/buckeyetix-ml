@@ -1,4 +1,4 @@
-import multiprocessing, sys, os, json
+import multiprocessing, sys, os, json, time
 
 from multiprocessing import Pool
 import numpy as np
@@ -19,9 +19,6 @@ def load_data():
 
     y_train = keras.utils.to_categorical(y_train)
     y_test = keras.utils.to_categorical(y_test)
-
-    # print(x_train.shape[0], 'train samples')
-    # print(x_test.shape[0], 'test samples')
 
     return x_train, y_train, x_test, y_test
 
@@ -71,8 +68,8 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
             nodes_per_layer = [3] * layers
             # makes an array of size <layers>, with default 3 nodes in each layer
 
-            for layer_index in range(0, layers):
-                for nodes in range(3, 10):
+            for layer_index in range(1, layers):
+                for nodes in range(3, 11):
                     nodes_per_layer[layer_index] = nodes
 
                     try:
@@ -86,9 +83,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
                             nodes_per_layer=nodes_per_layer
                         )
 
-
                         train_model(model, x_train, y_train, x_test, y_test, epochs)
-
 
                         score = model.evaluate(x_test, y_test, verbose=0)
 
@@ -109,15 +104,7 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
                     except Exception as e:
                         print(e)
 
-        # print('Trained model: ' + str(model_type) + ' with ' + str(layers) + ' hidden layer(s).')
-
     return max_accuracy, optimal_layers, optimal_dropout, optimal_nodes_per_layer
-
-def callback(result):
-    # print(result)
-    # with open(os.getenv("HOME") + '/tmp/results.txt', 'a') as results_file:
-    #     results_file.write(str(result))
-    pass
 
 def main():
     x_train, y_train, x_test, y_test = load_data()
@@ -138,9 +125,11 @@ def main():
     best_model = model_types[0]
     optimal_layers = 0
     optimal_dropout = 0.0
-    optimal_nodes_per_layer = 5
+    optimal_nodes_per_layer = []
 
     pool = Pool()
+
+    start = time.clock()
 
     for model_type in model_types:
         model_results.append(pool.apply_async(test_model_type, (model_type, x_train, y_train, x_test, y_test), callback=callback))
@@ -163,9 +152,15 @@ def main():
         except multiprocessing.TimeoutError:
             pass
 
+    finish = time.clock()
 
-
-    result = {'model': str(best_model), 'layers': optimal_layers, 'dropout': optimal_dropout, 'nodes': optimal_nodes_per_layer}
+    result = {
+        'model': str(best_model),
+        'layers': optimal_layers,
+        'dropout': optimal_dropout,
+        'nodes': optimal_nodes_per_layer,
+        'time': str(finish - start)
+    }
 
     with open(os.getenv("HOME") + '/tmp/result.json', 'w') as outfile:
         json.dump(result, outfile)

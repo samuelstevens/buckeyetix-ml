@@ -41,8 +41,8 @@ python src/models/all_models.py
 
 - [x] Add row number as parameter
 - [ ] Add weather (numerical rating maybe) as parameter
-- Optimize process past simply trying every option
-- Have output written to a file to see progress/errors
-- Record time take to find result
+- [ ] Optimize process past simply trying every option
+- [ ] Have output written to a file to see progress/errors
+- [ ] Record time take to find result
 
 current process (on stdlinux): 23584
