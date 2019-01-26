@@ -1,4 +1,4 @@
-import multiprocessing, sys, os, json, time
+import multiprocessing, sys, os, json, time, datetime
 
 from multiprocessing import Pool
 import numpy as np
@@ -162,7 +162,7 @@ def main():
         'time': str(finish - start)
     }
 
-    with open(os.getenv("HOME") + '/tmp/result.json', 'w') as outfile:
+    with open(os.getenv("HOME") + '/tmp/result-' + datetime.datetime.now() + '.json', 'w') as outfile:
         json.dump(result, outfile)
 
 main()
