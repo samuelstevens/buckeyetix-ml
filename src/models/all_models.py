@@ -66,7 +66,7 @@ def test_model_type(model_type, nodes_per_layer, x_train, y_train, x_test, y_tes
     max_accuracy = 0.0
     optimal_dropout = 0.0
 
-    dropout = 0.5
+    dropout = 0.05
 
     layers = len(nodes_per_layer)
     for dropout_increment in range(0, 10): # reset to 10 for proper runs
