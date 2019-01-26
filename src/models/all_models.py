@@ -10,6 +10,8 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.optimizers import RMSprop, Adagrad, SGD, Adadelta, Adam, Adamax, Nadam
 
+central_file = os.getenv("HOME") + '/tmp/finished_models.json'
+git_file = 'data/finished_models.json'
 
 def load_data():
     data = np.load(os.getenv("HOME") + '/tmp/normalized_data.npz')
@@ -64,7 +66,7 @@ def test_model_type(model_type, nodes_per_layer, x_train, y_train, x_test, y_tes
     max_accuracy = 0.0
     optimal_dropout = 0.0
 
-    dropout = 0.0
+    dropout = 0.5
 
     layers = len(nodes_per_layer)
     for dropout_increment in range(0, 10): # reset to 10 for proper runs
@@ -100,7 +102,7 @@ def test_model_type(model_type, nodes_per_layer, x_train, y_train, x_test, y_tes
         except Exception as e:
             print(e)
 
-        dropout += 0.03
+        dropout += 0.02
 
     return {
         'model': model_type,
@@ -112,7 +114,7 @@ def test_model_type(model_type, nodes_per_layer, x_train, y_train, x_test, y_tes
 
 def finish_model(answer):
     answer['model'] = str(answer['model'])
-    with open(os.getenv("HOME") + '/tmp/finished_models.json', 'a') as append_file:
+    with open(git_file, 'a') as append_file:
          json.dump(answer, append_file)
          append_file.write(os.linesep)
 
@@ -124,7 +126,7 @@ def get_best_network(best_network, answer):
 
 def get_finished_models():
     try:
-        with open(os.getenv("HOME") + '/tmp/finished_models.json', 'r') as read_file:
+        with open(git_file, 'r') as read_file:
             finished_models = [json.loads(line) for line in read_file]
     except ValueError as e:
         finished_models = []

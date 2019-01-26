@@ -1,0 +1,126 @@
+{"layers": 1, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [3], "accuracy": 0.53125}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [3, 3, 3], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [3, 3, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 1, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [4], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 3, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [4, 4], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 4, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 4, 4], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [4, 4, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.15, "nodes": [4, 4, 4, 4], "accuracy": 0.53125}
+{"layers": 1, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [5], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [5, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [5, 3, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [5, 4], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [5, 4, 3], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [5, 4, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 4, 4], "accuracy": 0.7291666666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 4, 4, 3], "accuracy": 0.5885416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.21, "nodes": [5, 4, 4, 4], "accuracy": 0.53125}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 5], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [5, 5, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [5, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 5, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 5, 4, 4], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [5, 5, 5], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [5, 5, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [5, 5, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [5, 5, 5, 5], "accuracy": 0.53125}
+{"layers": 1, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.27, "nodes": [6, 3], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [6, 3, 3], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [6, 3, 3, 3], "accuracy": 0.53125}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 4], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.09, "nodes": [6, 4, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [6, 4, 4], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [6, 4, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.18, "nodes": [6, 4, 4, 4], "accuracy": 0.53125}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 5], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.15, "nodes": [6, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.18, "nodes": [6, 5, 3, 3], "accuracy": 0.5364583333333334}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [6, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 5, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [6, 5, 4, 4], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [6, 5, 5], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 5, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 5, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [6, 5, 5, 5], "accuracy": 0.53125}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.18, "nodes": [6, 6], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.24, "nodes": [6, 6, 3, 3], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.12, "nodes": [6, 6, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.15, "nodes": [6, 6, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.21, "nodes": [6, 6, 4, 4], "accuracy": 0.5364583333333334}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.15, "nodes": [6, 6, 5], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 5, 5], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 6], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 6, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [6, 6, 6, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.24, "nodes": [6, 6, 6, 5], "accuracy": 0.5677083333333334}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [6, 6, 6, 6], "accuracy": 0.53125}
+{"layers": 1, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [7], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [7, 3], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.21, "nodes": [7, 3, 3], "accuracy": 0.5677083333333334}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.06, "nodes": [7, 3, 3, 3], "accuracy": 0.53125}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [7, 4], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.09, "nodes": [7, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [7, 4, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [7, 4, 4], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [7, 4, 4, 3], "accuracy": 0.5520833333333334}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [7, 4, 4, 4], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.0, "nodes": [7, 5], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.18, "nodes": [7, 5, 3], "accuracy": 0.53125}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.03, "nodes": [7, 5, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.54, "nodes": [7, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.54, "nodes": [7, 5, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.52, "nodes": [7, 5, 5], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 5, 4, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.6400000000000001, "nodes": [7, 5, 5, 3], "accuracy": 0.5677083333333334}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.54, "nodes": [7, 5, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.6000000000000001, "nodes": [7, 5, 5, 5], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 3, 3], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 4, 4], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 5], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.56, "nodes": [7, 6, 5, 5], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.52, "nodes": [7, 6, 6], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.52, "nodes": [7, 6, 6, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 6, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 6, 5], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 6, 6, 6], "accuracy": 0.5260416666666666}
+{"layers": 2, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.54, "nodes": [7, 7, 3, 3], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 4, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5800000000000001, "nodes": [7, 7, 4, 4], "accuracy": 0.546875}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.52, "nodes": [7, 7, 5], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 5, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 5, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.6400000000000001, "nodes": [7, 7, 5, 5], "accuracy": 0.53125}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 6], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 6, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 6, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 6, 5], "accuracy": 0.5364583333333334}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 6, 6], "accuracy": 0.5260416666666666}
+{"layers": 3, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 7], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 7, 3], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 7, 4], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 7, 5], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 7, 6], "accuracy": 0.5260416666666666}
+{"layers": 4, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5, "nodes": [7, 7, 7, 7], "accuracy": 0.5260416666666666}
+{"layers": 1, "model": "<class 'keras.optimizers.RMSprop'>", "dropout": 0.5800000000000001, "nodes": [8], "accuracy": 0.53125}
