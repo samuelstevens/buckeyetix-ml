@@ -28,6 +28,7 @@ def get_model(x_train, y_train, hidden_layers=1, use_dropout=True, model_type=ke
 
     model = Sequential()
 
+
     for i in range(hidden_layers):
         if i == 0:
             model.add(Dense(nodes_per_layer[i], activation='relu', input_shape=(x_train.shape[1],)))
@@ -64,6 +65,8 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
     optimal_dropout = 0.0
     optimal_nodes_per_layer = []
 
+    counter = 0
+
     for layers in range(1, 5): # number of layers 1-4
         dropout = 0.0
         for dropout_increment in range(0, 10): # reset to 10 for proper runs
@@ -88,6 +91,11 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
                         train_model(model, x_train, y_train, x_test, y_test, epochs)
 
                         score = model.evaluate(x_test, y_test, verbose=0)
+
+                        counter += 1
+
+                        if counter % 20 == 0:
+                            print(str(counter) + ' models evaluated by ' + str(model_type) + '.')
 
                         if score[1] > max_accuracy:
                             max_accuracy = score[1]
