@@ -115,11 +115,10 @@ for ticket in data:
         seat_value
     ]
 
-    if ticket['flag'] == 'Complete':
-        outcome = 2
-    elif ticket['flag'] == 'Available':
+    if ticket['flag'] == 'Available':
         outcome = 0
     else:
+        # both available and complete count as "showing interest"
         outcome = 1
 
     if random.random() > 0.1:

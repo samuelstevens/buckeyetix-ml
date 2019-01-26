@@ -1,5 +1,7 @@
 import multiprocessing, sys, os, json, time, datetime
 
+from util import get_nodes
+
 from multiprocessing import Pool
 import numpy as np
 
@@ -21,7 +23,6 @@ def load_data():
     y_test = keras.utils.to_categorical(y_test)
 
     return x_train, y_train, x_test, y_test
-
 
 def get_model(x_train, y_train, hidden_layers=1, use_dropout=True, model_type=keras.optimizers.RMSprop, dropout=0.2, nodes_per_layer=[5]):
     num_classes = y_train.shape[1]
@@ -57,70 +58,81 @@ def train_model(model, x_train, y_train, x_test, y_test, epochs):
 
     return
 
-def test_model_type(model_type, x_train, y_train, x_test, y_test):
+def test_model_type(model_type, nodes_per_layer, x_train, y_train, x_test, y_test):
     epochs = 400
 
     max_accuracy = 0.0
-    optimal_layers = 0
     optimal_dropout = 0.0
-    optimal_nodes_per_layer = []
 
-    counter = 0
+    dropout = 0.0
 
-    for layers in range(1, 5): # number of layers 1-4
-        dropout = 0.0
-        for dropout_increment in range(0, 10): # reset to 10 for proper runs
-            nodes_per_layer = [3] * layers
-            # makes an array of size <layers>, with default 3 nodes in each layer
+    layers = len(nodes_per_layer)
+    for dropout_increment in range(0, 10): # reset to 10 for proper runs
+        try:
+            model = get_model(
+                x_train=x_train,
+                y_train=y_train,
+                hidden_layers=layers,
+                use_dropout=True,
+                model_type=model_type,
+                dropout=dropout,
+                nodes_per_layer=nodes_per_layer
+            )
 
-            for layer_index in range(0, layers):
-                
-                for nodes in range(3, 11):
-                    nodes_per_layer[layer_index] = nodes
+            train_model(model, x_train, y_train, x_test, y_test, epochs)
 
-                    try:
-                        model = get_model(
-                            x_train=x_train,
-                            y_train=y_train,
-                            hidden_layers=layers,
-                            use_dropout=True,
-                            model_type=model_type,
-                            dropout=dropout,
-                            nodes_per_layer=nodes_per_layer
-                        )
+            score = model.evaluate(x_test, y_test, verbose=0)
 
-                        train_model(model, x_train, y_train, x_test, y_test, epochs)
+            if score[1] > max_accuracy:
+                max_accuracy = score[1]
+                optimal_dropout = dropout
 
-                        score = model.evaluate(x_test, y_test, verbose=0)
+                print(
+                    'Accuracy: ' +
+                    str(round(max_accuracy * 100, 1)) + '%, ' +
+                    str(model_type) + ' ' +
+                    str(layers) + ' layers, ' +
+                    str(round(optimal_dropout * 100, 1)) + '% dropout, ' +
+                    str(nodes_per_layer) +
+                    ' as node arrangement.'
+                )
 
-                        counter += 1
+        except Exception as e:
+            print(e)
 
-                        if counter % 20 == 0:
-                            print(str(counter) + ' models evaluated by ' + str(model_type) + '.')
+        dropout += 0.03
 
-                        if score[1] > max_accuracy:
-                            max_accuracy = score[1]
-                            optimal_layers = layers
-                            optimal_dropout = dropout
-                            optimal_nodes_per_layer = nodes_per_layer
+    return {
+        'model': model_type,
+        'layers': layers,
+        'accuracy': max_accuracy,
+        'dropout': optimal_dropout,
+        'nodes': nodes_per_layer,
+    }
 
-                            print(
-                                'Accuracy is ' + str(round(max_accuracy * 100, 1)) +
-                                '% using ' + str(optimal_layers) + ' layers, ' +
-                                str(round(optimal_dropout * 100, 1)) + '% dropout, ' +
-                                ' and ' + str(optimal_nodes_per_layer) +
-                                ' as node arrangement.'
-                            )
+def finish_model(answer):
+    answer['model'] = str(answer['model'])
+    with open(os.getenv("HOME") + '/tmp/finished_models.json', 'a') as append_file:
+         json.dump(answer, append_file)
+         append_file.write(os.linesep)
 
-                    except Exception as e:
-                        print(e)
-
-            dropout += 0.05
-
-    return max_accuracy, optimal_layers, optimal_dropout, optimal_nodes_per_layer
+def get_best_network(best_network, answer):
+    if best_network is not None and best_network['accuracy'] > answer['accuracy']:
+        return best_network
+    else:
+        return answer
 
 def main():
     x_train, y_train, x_test, y_test = load_data()
+
+    try:
+        with open(os.getenv("HOME") + '/tmp/finished_models.json', 'r') as read_file:
+            finished_models = [json.loads(line) for line in read_file]
+
+    except ValueError as e:
+        finished_models = []
+    except IOError as e:
+        finished_models = []
 
     model_types = [
         keras.optimizers.RMSprop,
@@ -132,34 +144,39 @@ def main():
         keras.optimizers.Nadam
     ]
 
-    model_results = []
+    results = []
 
-    max_accuracy = 0.0
-    best_model = model_types[0]
-    optimal_layers = 0
-    optimal_dropout = 0.0
-    optimal_nodes_per_layer = []
+    best_network = None
 
     pool = Pool()
 
     start = time.clock()
 
-    for model_type in model_types:
-        model_results.append(pool.apply_async(test_model_type, (model_type, x_train, y_train, x_test, y_test)))
+    models_to_test = 0
+
+    finished_models = set((i['model'] + str(i['nodes'])) for i in finished_models)
+
+    node_arrangements = get_nodes()
+
+    for model_type in model_types: # 7 different optimizers
+        for node_arrangement in node_arrangements:
+            if str(model_type) + str(node_arrangement) not in finished_models:
+                results.append(pool.apply_async(test_model_type, (model_type, node_arrangement, x_train, y_train, x_test, y_test)))
+                models_to_test += 1
+
+    if models_to_test == 0:
+        print('Tested all models.')
+        return
+
+    print('Testing ' + str(models_to_test) + ' models of ' + str(7 * len(node_arrangements)) + ' models total.')
 
     while 1:
         try:
-            answers = []
-            for result in model_results:
-                answers.append(result.get(0.02))
-
-            for (index, answer) in enumerate(answers):
-                if answer[0] > max_accuracy:
-                    best_model = model_types[index]
-                    max_accuracy = answer[0]
-                    optimal_layers = answer[1]
-                    optimal_dropout = answer[2]
-                    optimal_nodes_per_layer = answer[3]
+            for result in results:
+                answer = result.get(0.02)
+                results.remove(result)
+                finish_model(answer)
+                best_network = get_best_network(best_network, answer)
 
             break
         except multiprocessing.TimeoutError:
@@ -167,15 +184,9 @@ def main():
 
     finish = time.clock()
 
-    result = {
-        'model': str(best_model),
-        'layers': optimal_layers,
-        'dropout': optimal_dropout,
-        'nodes': optimal_nodes_per_layer,
-        'time': str(finish - start)
-    }
+    best_network['time'] = str(finish - start)
 
-    with open(os.getenv("HOME") + '/tmp/result-' + datetime.datetime.now() + '.json', 'w') as outfile:
-        json.dump(result, outfile)
+    with open(os.getenv("HOME") + '/tmp/result-' + str(datetime.datetime.now()) + '.json', 'w') as outfile:
+        json.dump(best_network, outfile)
 
 main()
