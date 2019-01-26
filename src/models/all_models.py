@@ -132,7 +132,7 @@ def main():
     start = time.clock()
 
     for model_type in model_types:
-        model_results.append(pool.apply_async(test_model_type, (model_type, x_train, y_train, x_test, y_test), callback=callback))
+        model_results.append(pool.apply_async(test_model_type, (model_type, x_train, y_train, x_test, y_test)))
 
     while 1:
         try:
