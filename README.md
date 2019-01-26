@@ -29,12 +29,20 @@ pip install -r requirements.txt
 
 ## Running
 
+### Local
+
 Ensure that folder `~/tmp` exists (and that you can write/read from it).
 
 ```bash
 cp data/tickets.json ~/tmp/
 python src/script.py
 python src/models/all_models.py
+```
+
+### Remote
+
+```bash
+python -u src/models/all_models.py > ~/tmp/$(date +"%d-%h-%y-%T").out &
 ```
 
 ## To Do
@@ -46,3 +54,7 @@ python src/models/all_models.py
 - [ ] Record time take to find result
 
 current process (on stdlinux): 23584
+
+```
+
+```

@@ -67,8 +67,6 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
     for layers in range(1, 5): # number of layers 1-4
         dropout = 0.0
         for dropout_increment in range(0, 10): # reset to 10 for proper runs
-            dropout += 0.05
-
             nodes_per_layer = [3] * layers
             # makes an array of size <layers>, with default 3 nodes in each layer
 
@@ -108,6 +106,8 @@ def test_model_type(model_type, x_train, y_train, x_test, y_test):
                     except Exception as e:
                         print(e)
 
+            dropout += 0.05
+            
     return max_accuracy, optimal_layers, optimal_dropout, optimal_nodes_per_layer
 
 def main():
