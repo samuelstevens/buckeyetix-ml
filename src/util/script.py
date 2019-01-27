@@ -14,6 +14,21 @@ test_tickets = []
 train_outcome = []
 test_outcome = []
 
+sums = {}
+counts = {}
+averages = {}
+
+for ticket in data:
+    if ticket['game'] in sums:
+        sums[ticket['game']] += ticket['price']
+        counts[ticket['game']] += 1
+    else:
+        sums[ticket['game']] = ticket['price']
+        counts[ticket['game']] = 1
+
+for key in sums:
+    averages[key] = float(sums[key]) / counts[key]
+
 for ticket in data:
     win_pctg = 0
     osu_win_pctg = 0
@@ -106,14 +121,16 @@ for ticket in data:
 
     new_ticket = [
         win_pctg,
-        osu_win_pctg,
-        rank,
-        osu_rank,
+        # osu_win_pctg,
+        # rank,
+        # osu_rank,
         ticket['price'],
-        rival,
+        float(ticket['price']) / averages[ticket['game']],
+        # rival,
         conference,
-        seat_value
+        seat_value,
     ]
+
 
     if ticket['flag'] == 'Available':
         outcome = 0
@@ -121,7 +138,7 @@ for ticket in data:
         # both available and complete count as "showing interest"
         outcome = 1
 
-    if random.random() > 0.1:
+    if random.random() < 0.8:
         train_tickets.append(new_ticket)
         train_outcome.append(outcome)
     else:
@@ -142,28 +159,28 @@ np.savez_compressed(
     y_test=test_outcome
 )
 
-for i in range(train_tickets.shape[0]):
-    train_tickets[i][2] = max_rank - train_tickets[i][2] # rank
-    train_tickets[i][3] = max_rank - train_tickets[i][3] # osu_rank
+# for i in range(train_tickets.shape[0]):
+#     train_tickets[i][2] = max_rank - train_tickets[i][2] # rank
+#     train_tickets[i][3] = max_rank - train_tickets[i][3] # osu_rank
+#
+#     train_tickets[i][2] /= max_rank # rank
+#     train_tickets[i][3] /= max_rank # osu_rank
+#     train_tickets[i][4] = (train_tickets[i][4] - min_price) / (max_price - min_price) # price
+#     train_tickets[i][7] /= 160 # row
+#
+# for i in range(test_tickets.shape[0]):
+#     test_tickets[i][2] = max_rank - test_tickets[i][2] # rank
+#     test_tickets[i][3] = max_rank - test_tickets[i][3] # osu_rank
+#
+#     test_tickets[i][2] /= max_rank # rank
+#     test_tickets[i][3] /= max_rank # osu_rank
+#     test_tickets[i][4] = (test_tickets[i][4] - min_price) / (max_price - min_price) # price
+#     test_tickets[i][7] /= 160 # row
 
-    train_tickets[i][2] /= max_rank # rank
-    train_tickets[i][3] /= max_rank # osu_rank
-    train_tickets[i][4] = (train_tickets[i][4] - min_price) / (max_price - min_price) # price
-    train_tickets[i][7] /= 160 # row
-
-for i in range(test_tickets.shape[0]):
-    test_tickets[i][2] = max_rank - test_tickets[i][2] # rank
-    test_tickets[i][3] = max_rank - test_tickets[i][3] # osu_rank
-
-    test_tickets[i][2] /= max_rank # rank
-    test_tickets[i][3] /= max_rank # osu_rank
-    test_tickets[i][4] = (test_tickets[i][4] - min_price) / (max_price - min_price) # price
-    train_tickets[i][7] /= 160 # row
-
-np.savez_compressed(
-    os.getenv("HOME") + '/tmp/normalized_data.npz',
-    x_train=train_tickets,
-    y_train=train_outcome,
-    x_test=test_tickets,
-    y_test=test_outcome
-)
+# np.savez_compressed(
+#     os.getenv("HOME") + '/tmp/normalized_data.npz',
+#     x_train=train_tickets,
+#     y_train=train_outcome,
+#     x_test=test_tickets,
+#     y_test=test_outcome
+# )

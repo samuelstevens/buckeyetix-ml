@@ -2,3 +2,8 @@ venv/
 *.h5
 node_modules/
 *.pyc
+*.png
+*.dot
+
+package.json
+package-lock.json
