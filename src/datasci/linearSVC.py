@@ -1,6 +1,4 @@
-from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.svm import LinearSVC
-from sklearn.model_selection import cross_val_score, KFold
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
@@ -36,7 +34,3 @@ print('Training score:')
 print(estimator.score(x_train, y_train))
 print('Test score:')
 print(estimator.score(x_test, y_test))
-
-score = cross_val_score(estimator, X=x, y=y, cv=KFold(n_splits=4, shuffle=True))
-print('Cross validated score:')
-print(score)

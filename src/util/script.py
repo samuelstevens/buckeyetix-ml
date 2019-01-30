@@ -1,5 +1,5 @@
 import numpy as np
-import random, json, os
+import random, json, os, math
 
 max_price = 0
 min_price = 999
@@ -124,11 +124,17 @@ for ticket in data:
         # osu_win_pctg,
         # rank,
         # osu_rank,
+        math.sqrt(ticket['price']),
         ticket['price'],
+        ticket['price'] * ticket['price'],
+        ticket['price'] * ticket['price'] * ticket['price'],
         float(ticket['price']) / averages[ticket['game']],
         # rival,
         conference,
         seat_value,
+        seat_value * seat_value,
+        seat_value * seat_value * seat_value,
+        ticket['price'] / seat_value,
     ]
 
 
@@ -158,7 +164,7 @@ np.savez_compressed(
     x_test=test_tickets,
     y_test=test_outcome
 )
-
+#
 # for i in range(train_tickets.shape[0]):
 #     train_tickets[i][2] = max_rank - train_tickets[i][2] # rank
 #     train_tickets[i][3] = max_rank - train_tickets[i][3] # osu_rank
@@ -176,7 +182,7 @@ np.savez_compressed(
 #     test_tickets[i][3] /= max_rank # osu_rank
 #     test_tickets[i][4] = (test_tickets[i][4] - min_price) / (max_price - min_price) # price
 #     test_tickets[i][7] /= 160 # row
-
+#
 # np.savez_compressed(
 #     os.getenv("HOME") + '/tmp/normalized_data.npz',
 #     x_train=train_tickets,
